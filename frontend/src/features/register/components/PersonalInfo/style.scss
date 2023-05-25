@@ -1,0 +1,33 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25em;
+}
+
+.card > input {
+    padding: 1rem;
+}
+
+.card > h2 {
+    text-align: center;
+}
+
+.card > div:nth-child(-n+2) {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.card > div:nth-child(-n+2) .input_container {
+    flex: 1 1 0%;
+}
+
+.personal_info_container {
+    width: 100%;
+    height: 100%;
+}
+
+.personal_info_container .input_personal_info {
+
+}

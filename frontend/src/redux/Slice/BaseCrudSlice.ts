@@ -1,5 +1,5 @@
 import { Draft, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { BaseModel } from "../../model/BaseModel";
+import { BaseModel } from "../../shared/model/BaseModel";
 import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
 export interface SliceState<T extends BaseModel> {
@@ -147,7 +147,7 @@ export class BaseCrudSlice<T extends BaseModel, TCreate, TUpdate extends BaseMod
     };
 
     slice:ReturnType<typeof createSlice<SliceState<T>, {}, string>>;
-    private initialState:SliceState<T> = { data: [], fetching: false }
+    private initialState: SliceState<T> = { data: [], fetching: false }
     name: string
     baseUrl: string
     endpoint: string         

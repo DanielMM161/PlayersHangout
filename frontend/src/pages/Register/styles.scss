@@ -1,0 +1,82 @@
+.register_container {
+    width: 100%;
+    height: 100%;
+    gap: 7%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.steps_container {
+    display: flex;
+    width: 100%;
+    gap: 100px;
+    justify-content: space-between;
+    position: absolute;
+    margin-top: 5rem;
+    top: 0;
+    padding: 1rem;
+    max-width: var(--sc-sm);
+}
+
+.steps_progress {
+    background-color: #8b6060;
+    width: 0%;
+    transition: 0.3;
+}
+
+.steps_progress.active {
+    background: red;
+    width: 0%;
+    transition: 0.3;
+}
+
+.step_element {
+    width: 50px;
+    display: flex;
+    height: 50px;
+    border-radius: 50%;
+    background: #d7d7d7;
+    justify-content: center;
+    align-items: center;
+}
+
+.step_element.active {
+    background: red;
+}
+
+.register_container .buttons_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 1rem;
+}
+
+.register_container .buttons_container button {
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25em;
+}
+
+.card > input {
+    padding: 1rem;
+}
+
+.card > h2 {
+    text-align: center;
+}
+
+.register_container .form_container {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    padding: 1rem;
+    border: 1px solid black;
+}

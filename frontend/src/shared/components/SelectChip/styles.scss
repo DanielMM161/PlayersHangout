@@ -1,0 +1,14 @@
+.chips_container {
+    max-height: 200px;
+    overflow: auto
+}
+
+.chips_container > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+}

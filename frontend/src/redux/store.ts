@@ -4,8 +4,7 @@ import { instrumentSlice } from "./Slice/instrumentSlice";
 import { profileSlice } from "./Slice/profileSlice";
 
 export const store = configureStore({
-    reducer: {
-        profile: profileSlice.slice.reducer,
+    reducer: {       
         genres: genreSlice.slice.reducer,
         instruments: instrumentSlice.slice.reducer
     }

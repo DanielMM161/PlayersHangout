@@ -1,0 +1,20 @@
+.input_container {
+    //display: block;
+}
+
+.input_container input {
+    width: 100%;
+    padding: 1.2rem;
+    border: 1px double #c3c3c3;
+    border-radius: 5px;
+    margin-top: .25rem;
+}
+
+.input_container input:focus {
+    border-color: var(--primary-color);
+}
+
+.input_container label {
+    font-weight: bold;
+    letter-spacing: 1.1px;    
+}

@@ -1,4 +1,4 @@
-import { Genre } from "../../model/Genre";
+import { Genre } from "../../shared/model/Genre";
 import { BaseCrudSlice } from "./BaseCrudSlice";
 
 export const genreSlice = new BaseCrudSlice<Genre, Genre, Genre>('GenreSlice', 'Genres');

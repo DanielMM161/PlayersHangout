@@ -9,12 +9,18 @@
 }
 
 .chip.selected {
-    background: #7a2a79;
+    background: var(--primary-color);
+    color: white;
+}
+
+.chip.selected.main {
+    border: 1px solid transparent;
+    border-color: #000000;
 }
 
 .closebtn {
     padding-left: 10px;
-    color: #888;
+    color: #121212;
     font-weight: bold;
     float: right;
     font-size: 20px;

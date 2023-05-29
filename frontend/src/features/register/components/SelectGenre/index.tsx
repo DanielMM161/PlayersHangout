@@ -40,11 +40,13 @@ function SelectGenre({
                 title="Select Maxium 3 Genres, if you don't see what you're looking for try searching"
                 data={genres}
                 selected={selectedGenre}
+                messageMainItem="The first element would be the genre that most like you"
                 maxElements={3}
                 onAction={(value) => handleOnAction(value)}
             >
                   <ButtonsStepper
                     disabledContinue={disableButton}
+                    lastStep={true}
                     onBackClick={backStep}
                     onContinueClick={lastStep}                
                     />                 

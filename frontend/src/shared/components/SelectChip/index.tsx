@@ -4,12 +4,15 @@ import { BaseModel } from "../../model/BaseModel";
 import UseSelectChip from "../../hooks/useSelectChip";
 import './styles.scss';
 import { useEffect } from "react";
+import Loader from "../Loader";
 
 interface Props<T> {
     data: T[];
     selected: T[];
+    messageMainItem?: string;
     title: string;
     maxElements: number;
+    fetching: boolean;
     onAction: (items: T[]) => void;
     children?: React.ReactNode;
 }
@@ -17,8 +20,10 @@ interface Props<T> {
 function SelectChip<T extends BaseModel>({
     data,
     selected,
+    messageMainItem = '',
     title,
     maxElements,
+    fetching,
     onAction,
     children
 }: Props<T>) {    
@@ -44,7 +49,7 @@ function SelectChip<T extends BaseModel>({
                     onClickChip={() => handleSelectedChip(item)}                                
                 />    
             )
-        }        
+        }                
 
         return data.map(item => 
             <Chip
@@ -61,26 +66,39 @@ function SelectChip<T extends BaseModel>({
             <h4>{title}</h4>
             <DelayInput onUpdate={(text) => searchChip(text)}/>
             {selectedItems.length ? (
-                <div>
-                    <ul>
-                        {selectedItems.map(item => 
-                            <Chip
-                                key={item.id+item.name}
-                                title={item.name}
-                                selected={true}
-                                closable={true}   
-                                onClosableClick={() => handleOnClosableClick(item)}                                         
-                            />    
-                        )}
-                    </ul>
-                </div>
+                <>
+                    <div className="selected_items_container">
+                        <ul>
+                            {selectedItems.map((item, idx) => 
+                                <Chip
+                                    key={item.id+item.name}
+                                    className={idx === 0 ? 'main' : ''}
+                                    title={item.name}
+                                    selected={true}
+                                    closable={true}   
+                                    onClosableClick={() => handleOnClosableClick(item)}                                         
+                                />    
+                            )}
+                        </ul>
+                    </div>
+                    <div className="message_main_item">
+                        {/* {INSERT IMAGE} */}
+                        <span>{messageMainItem}</span>
+                    </div>
+                </>
             ) : null}
 
-            <div className="chips_container">
-                <ul>
-                    {showItems()}
-                </ul>
-            </div>
+            {fetching ? (
+                 <div className="chips_container" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <Loader />
+                </div>                
+            ) : (
+                <div className="chips_container">
+                    <ul>
+                        {showItems()}
+                    </ul>
+                </div>
+            )}            
 
             {children}                                  
         </div>

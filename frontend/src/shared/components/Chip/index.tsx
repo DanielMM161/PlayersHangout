@@ -2,6 +2,7 @@ import './style.scss';
 
 interface Props {
     title: string;
+    className?: string;
     selected?: boolean;
     closable?: boolean;
     onClickChip?: () => void; 
@@ -10,6 +11,7 @@ interface Props {
 
 function Chip({
     title,
+    className = '',
     selected = false,
     closable = false,
     onClickChip,
@@ -17,7 +19,10 @@ function Chip({
 }: Props) {
 
     return (
-        <div className={'chip '+ (selected ? 'selected' : '')} onClick={onClickChip}>
+        <div 
+            className={`chip ${selected ? 'selected' : ''} ${className}`} 
+            onClick={onClickChip}
+        >
             {title}
             {closable ? (
                 <span className="closebtn" onClick={onClosableClick}>&times;</span>

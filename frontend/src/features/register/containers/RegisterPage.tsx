@@ -1,46 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PersonalInfo from '../components/PersonalInfo';
 import SelectInstrument from '../components/SelectInstrument';
 import SelectGenre from '../components/SelectGenre';
 import { Instrument } from '../../../shared/model/Instrument';
 import { Genre } from '../../../shared/model/Genre';
-import './styles.scss';
-import { RegisterRequest } from '../../../redux/Slice/profileSlice';
+import { RegisterRequest, register } from '../../../redux/Slice/profileSlice';
 import StepperInfo from '../components/StepperInfo';
 import Divider from '../../../shared/components/Divider';
+import './styles.scss';
+import { useAppDispatch } from '../../../shared/hooks/redux';
 
 export interface UserInfo {
-    name: '',
-    lastName: '',
-    email: '',
-    password: '',
-    repeatPassword: '',
-    city: ''
+    name: string,
+    lastName: string,
+    email: string,
+    password: string,    
+    city: string
 }
 
 const steps = ['Personal Info', 'Select Instrument', 'Select Genre']
 
 function RegisterPage() {
-    
+    const dispatch = useAppDispatch();
     const [actualStep, setActualStep] = useState(0)
     const [userInfo, setUserInfo] = useState<UserInfo>({
         name: '',
         lastName: '',
         email: '',
-        password: '',
-        repeatPassword: '',
+        password: '',        
         city: ''
     })
     const [selectedInstruments, setSelectedInstruments] = useState<Instrument[]>([])
     const [selectedGenre, setSelectedGenre] = useState<Genre[]>([])
-
+    
     function handleNexStepPersonalInfo(item: UserInfo) {
         setUserInfo(item)
         setActualStep(actualStep + 1)
     }
 
     function handleSubmitForm() {
-        const register: RegisterRequest = {
+        const registerRequest: RegisterRequest = {
             name: userInfo.name,
             lastName: userInfo.lastName,
             email: userInfo.email,
@@ -48,9 +47,10 @@ function RegisterPage() {
             city: userInfo.city,
             latitude: 0,
             longitude: 0,
-            genres: selectedGenre,
-            instruments: selectedInstruments
+            genres: null,
+            instruments: selectedInstruments.map(item => '8d5e9897-b5c9-43a0-9c23-820c73370dfc')
         }
+        dispatch(register(registerRequest))
     }
 
     return (
@@ -75,7 +75,10 @@ function RegisterPage() {
                                 backStep={ () => setActualStep(actualStep - 1) } 
                                 nextStep={() => setActualStep(actualStep + 1)}
                                 selectedInstruments={selectedInstruments}
-                                setSelectedInstrument={setSelectedInstruments}
+                                setSelectedInstrument={(item) => {
+                                    console.log("en set selected instrument ---> ", item)
+                                    setSelectedInstruments(item)
+                                }}
                             />
                         ) : null}
 

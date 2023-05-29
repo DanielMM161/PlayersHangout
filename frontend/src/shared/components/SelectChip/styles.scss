@@ -1,14 +1,29 @@
 .chips_container {
-    max-height: 200px;
+    min-height: 250px;
+    max-height: 320px;
     overflow: auto
 }
 
 .chips_container > ul {
     display: flex;
+    height: 100%;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: 17px;
     list-style: none;
     padding: 0px;
     margin: 0px;
     cursor: pointer;
+}
+
+.selected_items_container ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.message_main_item {
+    display: flex;
+}
+.message_main_item > i {
+    background: url('../../assets/main.svg')
 }

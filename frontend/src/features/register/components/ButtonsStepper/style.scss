@@ -1,0 +1,23 @@
+.buttons_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 1rem;
+}
+
+.buttons_container button {
+    width: 100%;    
+}
+
+.buttons_container button:focus,
+button:focus-visible {
+    outline: 3px auto #969696;
+}
+
+.buttons_container .continue_button {
+    background: #646cff;    
+    color: white;
+    font-weight: 600;    
+    line-height: 1.25rem;
+}

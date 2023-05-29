@@ -15,7 +15,7 @@ public static class ModelBuilderInsertExtensions
         var genres = configuration.GetSection("genres").Get<string[]>();
         foreach (var genreName in genres)
         {
-            var genre = new Genre { Id = Guid.NewGuid(), Name = genreName };
+            var genre = new Genre { Id = Guid.NewGuid(), Name = genreName, NameNormalized = "" };
             modelBuilder.Entity<Genre>().HasData(genre);
         }        
     }
@@ -29,7 +29,7 @@ public static class ModelBuilderInsertExtensions
         var instruments = configuration.GetSection("instruments").Get<string[]>();
         foreach (var instrumentName in instruments)
         {
-            var instrument = new Instrument { Id = Guid.NewGuid(), Name = instrumentName };
+            var instrument = new Instrument { Id = Guid.NewGuid(), Name = instrumentName, NameNormalized = "" };
             modelBuilder.Entity<Instrument>().HasData(instrument);
         }        
     }
@@ -45,7 +45,8 @@ public static class ModelBuilderInsertExtensions
             var newLocation = new City
             {
                 Id = Guid.NewGuid(),
-                Name = city
+                Name = city,
+                NameNormalized = ""
             };
             modelBuilder.Entity<City>().HasData(newLocation);            
         }      

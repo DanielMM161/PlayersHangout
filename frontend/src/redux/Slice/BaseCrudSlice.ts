@@ -1,6 +1,6 @@
 import { Draft, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { BaseModel } from "../../shared/model/BaseModel";
-import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 export interface SliceState<T extends BaseModel> {
     data: T[];

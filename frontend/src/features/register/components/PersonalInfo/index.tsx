@@ -1,8 +1,9 @@
 import ButtonsStepper from '../ButtonsStepper';
 import UsePersonalInfo from '../../hooks/usePersonalInfo';
 import { UserInfo } from '../../containers/RegisterPage';
-import './style.scss';
 import Input from '../../../../shared/components/Input';
+import AutoCompleteInput from '../../../../shared/components/AutoCompleteInput';
+import './style.scss';
 
 interface Props {
     actualUserInfo: UserInfo;
@@ -16,7 +17,9 @@ function PersonalInfo({
     const {
         userForm,
         disableButton,
+        cities,
         handleInputChange,
+        setUserForm
     } = UsePersonalInfo({actualUserInfo})
 
     return (
@@ -25,8 +28,9 @@ function PersonalInfo({
                 <Input 
                     name='name'
                     label='Name'
-                    placeHolder='Name' 
+                    placeHolder='Name'
                     className='input_personal_info'
+                    required={true}
                     value={userForm.name} 
                     onChange={(e) => handleInputChange(e)} 
                 />
@@ -36,6 +40,7 @@ function PersonalInfo({
                     label='Last Name'
                     placeHolder='Last Name' 
                     className='input_personal_info'
+                    required={true}
                     value={userForm.lastName} 
                     onChange={(e) => handleInputChange(e)} 
                 />
@@ -47,6 +52,7 @@ function PersonalInfo({
                     label='Email'
                     placeHolder='Last Name' 
                     className='input_personal_info'
+                    required={true}
                     value={userForm.email} 
                     onChange={(e) => handleInputChange(e)} 
                 />
@@ -57,22 +63,20 @@ function PersonalInfo({
                     placeHolder='Password' 
                     className='input_personal_info'
                     type='password'
+                    required={true}
                     value={userForm.password} 
                     onChange={(e) => handleInputChange(e)} 
                 />
             </div>
 
-
-            <Input 
-                name='city'
+            <AutoCompleteInput                
+                options={cities.map(item => item.name)}
                 label='City'
-                placeHolder='City' 
-                className='input_personal_info'
-                value={userForm.city} 
-                onChange={(e) => handleInputChange(e)} 
+                onValueChange={(value) => setUserForm(prevState => ({...prevState, city: value}))}
             />
 
             <ButtonsStepper
+                showGoBack={false}
                 disabledContinue={disableButton}
                 onBackClick={() => {}}
                 onContinueClick={() => nextStep(userForm)}                

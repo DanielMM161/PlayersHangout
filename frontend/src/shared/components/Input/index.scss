@@ -1,5 +1,5 @@
-.input_container {
-    //display: block;
+.input_container input:invalid {
+    border: 1px double var(--danger);
 }
 
 .input_container input {

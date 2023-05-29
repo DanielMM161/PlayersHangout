@@ -4,6 +4,7 @@ interface Props {
     value: string;
     label: string;
     placeHolder: string;
+    required?: boolean;
     name: string;
     type?: string;
     className?: string
@@ -14,6 +15,7 @@ function Input({
     value,
     label,
     placeHolder,
+    required = false,
     name,
     type = 'text',
     className = '',
@@ -28,7 +30,9 @@ function Input({
                 placeholder={placeHolder}
                 className={className}
                 value={value}      
-                type={type}     
+                type={type}
+                required={required}
+                
                 onChange={(e) => onChange(e)}
                 autoFocus
             />

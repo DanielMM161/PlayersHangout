@@ -31,6 +31,7 @@ function SelectInstrument({
     useEffect(() => {        
         if (!instruments.length) dispatch(getAllInstruments({}))
         if (!cities.length) dispatch(getAllCities({}))
+        
     }, [instruments, cities])
 
     function handleOnAction(items: Instrument[]) {        
